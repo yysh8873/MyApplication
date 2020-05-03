@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools" package="com.example.myapplication">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.example.myapplication.Login" android:label="Login 액티비티" />
+        <activity android:name="com.example.myapplication.Register" android:label="Register 액티비티" />
+        <activity android:name="com.example.myapplication.Home" android:label="한신이닭" />
+        <activity android:name="com.example.myapplication.HomeMain" android:label="HomeMain 액티비티" />
+        <activity android:name="com.example.myapplication.Order" android:label="Order 액티비티" />
+        <activity android:name="com.example.myapplication.Order_menu1" android:label="Order_menu1 액티비티" />
+        <activity android:name="com.example.myapplication.Order_menu2" android:label="Order_menu2 액티비티" />
+        <activity android:name="com.example.myapplication.Order_menu3" android:label="Order_menu3 액티비티" />
+        <activity android:name="com.example.myapplication.Order_menu4" android:label="Order_menu4 액티비티" />
+        <activity android:name="com.example.myapplication.Order_menu5" android:label="Order_menu5 액티비티" />
+        <activity android:name="com.example.myapplication.Payment" android:label="Payment 액티비티" />
+        <activity android:name="com.example.myapplication.Menu" android:label="Menu 액티비티" />
+        <activity android:name="com.example.myapplication.MyInfo" android:label="MyInfo 액티비티" />
+        <activity android:name="com.example.myapplication.MyInfoEdit" android:label="MyInfoEdit 액티비티" />
+        <activity android:name="com.example.myapplication.App" android:label="App 액티비티" />
+        <activity android:name="com.example.myapplication.HomeList" android:label="HomeList 액티비티" />
+        <activity android:name="com.example.myapplication.Popular" android:label="Frag3 액티비티" />
+
+    </application>
+
+</manifest>

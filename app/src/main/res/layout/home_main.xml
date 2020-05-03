@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/colorPink">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👉앱 주문👈하고 먹어보자👐"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/font1"
+            android:background="#FFFFFF"
+            android:padding="10dp"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EFEFEF">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/shipping"
+                android:drawablePadding="10dp"
+                android:text="배달주문"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_delivery"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/food"
+                android:drawablePadding="10dp"
+                android:text="포장주문"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_pick"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/smartphone"
+                android:drawablePadding="10dp"
+                android:text="홀주문"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_hall"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#CCCCCC">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/menu"
+                android:drawablePadding="10dp"
+                android:text="메뉴보기"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="@drawable/button_btn2"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_menu"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/shopping_list"
+                android:drawablePadding="10dp"
+                android:text="나의정보"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="@drawable/button_btn2"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_info"/>
+
+
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/warning"
+                android:drawablePadding="10dp"
+                android:text="앱 정보"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="@drawable/button_btn2"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_app"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/colorPink"
+            android:layout_margin="10dp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👉내가 찜한 닭 (한신대점)"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  전화번호: 050-7465-4143"
+                android:textSize="12dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  주소: 경기 오산시 양산로 347(지번: 양산동 379-1)"
+                android:textSize="12dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  영업시간: 매일 11:00 - 22:00"
+                android:textSize="12dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+
+    </LinearLayout>
+
+</LinearLayout>

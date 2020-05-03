@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:gravity="bottom"
+        app:umanoDragView="@id/dragView"
+        app:umanoScrollableView="@id/listView"
+        app:umanoPanelHeight="70dp"
+        app:umanoOverlay="false"
+        app:umanoParallaxOffset="200dp"
+        app:umanoShadowHeight="10dp">
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPink"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/colorPink">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="최소주문 금액 👉없습니다👈 🤗"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/font1"
+            android:background="#FFFFFF"
+            android:padding="5dp"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EFEFEF">
+
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/menu1"
+                android:drawablePadding="10dp"
+                android:text="안동찜닭"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_menu1"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/menu2"
+                android:drawablePadding="10dp"
+                android:text="고추장찜닭"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_menu2"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/menu3"
+                android:drawablePadding="10dp"
+                android:text="치즈순살찜닭"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_menu3"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EFEFEF">
+
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/menu1"
+                android:drawablePadding="10dp"
+                android:text="순살 안동찜닭"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_menu4"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/menu2"
+                android:drawablePadding="10dp"
+                android:text="순살 고추장찜닭"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_menu5"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/tip"
+                android:drawablePadding="10dp"
+                android:text="토핑추가💰👈"
+                android:textSize="15dp"
+                android:textColor="#000000"
+                android:fontFamily="@font/font1"
+                android:background="#EFEFEF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:enabled="false"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EFEFEF">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🤜추가 메뉴🤛"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:fontFamily="@font/font1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F0F0F0"
+                android:padding="10dp"
+                android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/colorPink"
+            android:layout_margin="10dp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👉내가 찜한 닭 (한신대점)"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  전화번호: 050-7465-4143"
+                android:textSize="12dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  주소: 경기 오산시 양산로 347(지번: 양산동 379-1)"
+                android:textSize="12dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  영업시간: 매일 11:00 - 22:00"
+                android:textSize="12dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</ScrollView>
+    <LinearLayout
+            android:id="@+id/dragView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="false"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="🛍장바구니🛍"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/font1" />
+        </LinearLayout>
+
+        <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:textSize="20dp"
+                android:fontFamily="@font/font1">
+        </ListView>
+    </LinearLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPink"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@color/colorPink">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👉제작자👈"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:textColor="#000000"
+                android:padding="10dp"/>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFEFEF">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/con2"
+                    android:drawablePadding="10dp"
+                    android:text="레베럽"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/font1"
+                    android:background="#FFFFFF"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이소현 201758038 컴퓨터공학부\n권시연 201658103 컴퓨터공학부\n우주영 201746025 IT경영학과"
+                    android:textSize="20dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/font1"/>
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👉프로젝트 소개👈"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:textColor="#000000"
+                android:padding="10dp"/>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFEFEF">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/chicken"
+                    android:drawablePadding="10dp"
+                    android:text="한신이닭"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/font1"
+                    android:background="#FFFFFF"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="기존의 주문 및 결제만 가능한 앱에서\n특별한 기능을 추가한 앱!\n친구와 같이 먹기\n(공동결제기능)"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/font1"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@color/colorPink"
+                android:layout_margin="10dp">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="👉내가 찜한 닭 (한신대점)"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/font1"
+                    android:background="@color/colorPink"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="  전화번호: 050-7465-4143"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/font1"
+                    android:background="@color/colorPink"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="  주소: 경기 오산시 양산로 347(지번: 양산동 379-1)"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/font1"
+                    android:background="@color/colorPink"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="  영업시간: 매일 11:00 - 22:00"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/font1"
+                    android:background="@color/colorPink"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
