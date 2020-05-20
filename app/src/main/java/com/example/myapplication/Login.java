@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,12 +33,20 @@ public class Login extends AppCompatActivity {
         final EditText edit_PW = (EditText) findViewById(R.id.edit_PW);
         String str_PW = edit_PW.getText().toString();
 
+        final CheckBox checkbox = (CheckBox) findViewById(R.id.checkbox);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Home.class);
-                startActivity(intent);
+                if(checkbox.isChecked()){
+                    Intent intent = new Intent(getApplicationContext(), HomeManager.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }
@@ -57,7 +64,7 @@ public class Login extends AppCompatActivity {
             case R.id.item1:
                 AlertDialog.Builder dlg1 = new AlertDialog.Builder(Login.this);
                 dlg1.setTitle("레베럽");
-                dlg1.setMessage("이소현 201758038 컴퓨터공학부\n권시연 201658103 컴퓨터공학부\n우주영 201746025 IT경영학과");
+                dlg1.setMessage("이소현 201758038 컴퓨터공학부\\n권시연 201658103 컴퓨터공학부\\n우주영 201746025 IT경영학과");
                 dlg1.setIcon(R.drawable.con2);
                 dlg1.setPositiveButton("확인",null);
                 dlg1.show();

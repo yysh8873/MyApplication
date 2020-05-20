@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -39,7 +40,17 @@ public class Order_menu3 extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), position+" 번째 값 : " + parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        AlertDialog.Builder dlg1 = new AlertDialog.Builder(Order_menu3.this);
+                        dlg1.setTitle("장바구니 삭제");
+                        dlg1.setMessage("장바구니에서 " + parent.getItemAtPosition(position) + "를 빼시겠습니까?");
+                        dlg1.setIcon(R.drawable.delete);
+                        dlg1.setPositiveButton("확인",null);
+                        dlg1.show();
+                    }
+                });
             }
         });
     }

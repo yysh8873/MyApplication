@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/colorPink">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="😤오늘 하루도 즐겁게 팔아봅시다👊"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/font1"
+            android:background="#FFFFFF"
+            android:padding="10dp"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFCFCF">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/smartphone"
+                android:drawablePadding="10dp"
+                android:text="주문이 들어왔습니다"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_list"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CFFFCF">
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/laptop"
+            android:drawablePadding="10dp"
+            android:text="주문이 취소되었습니다"
+            android:textSize="15dp"
+            android:fontFamily="@font/font1"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:id="@+id/btn_list_cancel"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#CFCFFF">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/soldout"
+                android:drawablePadding="10dp"
+                android:text="그만 팔고 싶습니다"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_list_menu"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/colorPink"
+            android:layout_margin="10dp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👉내가 찜한 닭 (한신대점)"
+                android:textSize="15dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  전화번호: 050-7465-4143"
+                android:textSize="12dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  주소: 경기 오산시 양산로 347(지번: 양산동 379-1)"
+                android:textSize="12dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  영업시간: 매일 11:00 - 22:00"
+                android:textSize="12dp"
+                android:fontFamily="@font/font1"
+                android:background="@color/colorPink"/>
+
+    </LinearLayout>
+
+</LinearLayout>

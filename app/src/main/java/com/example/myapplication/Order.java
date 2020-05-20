@@ -1,11 +1,13 @@
 package com.example.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -75,7 +77,6 @@ public class Order extends AppCompatActivity {
             }
         });
 
-
         // 리스트 연결
         init();
 
@@ -88,9 +89,20 @@ public class Order extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), position+" 번째 값 : " + parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        AlertDialog.Builder dlg1 = new AlertDialog.Builder(Order.this);
+                        dlg1.setTitle("장바구니 삭제");
+                        dlg1.setMessage("장바구니에서 " + parent.getItemAtPosition(position) + "를 빼시겠습니까?");
+                        dlg1.setIcon(R.drawable.delete);
+                        dlg1.setPositiveButton("확인",null);
+                        dlg1.show();
+                    }
+                });
             }
         });
+
 
     }
 
@@ -106,7 +118,7 @@ public class Order extends AppCompatActivity {
 
     private void getData() {
         // 임의의 데이터입니다.
-        List<String> listTitle = Arrays.asList("공기밥", "탄산음료(1.25L)", "소주");
+        List<String> listTitle = Arrays.asList("공기밥", "탄산음료(1.25L), 소주");
         List<String> listContent = Arrays.asList(
                 "1000원",
                 "2000원",
@@ -118,6 +130,16 @@ public class Order extends AppCompatActivity {
             Data data = new Data();
             data.setTitle(listTitle.get(i));
             data.setContent(listContent.get(i));
+            data.setBtn("선택");
+            data.setDlgTitle("장바구니 담기");
+            data.setDlgMsg("선택한 항목을 장바구니에 담으시겠습니까?");
+            data.setDlgPB(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(Order.this, "장바구니 담았습니다",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
 
             // 각 값이 들어간 data를 adapter에 추가합니다.
             adapter.addItem(data);
@@ -125,7 +147,10 @@ public class Order extends AppCompatActivity {
 
         // adapter의 값이 변경되었다는 것을 알려줍니다.
         adapter.notifyDataSetChanged();
+
     }
+
+
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
