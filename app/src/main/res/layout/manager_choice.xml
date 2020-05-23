@@ -10,8 +10,8 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="😤오늘 하루도 즐겁게 팔아봅시다👊"
-            android:textSize="20dp"
+            android:text="🤔주문 목록 관리👊"
+            android:textSize="35dp"
             android:textAlignment="center"
             android:fontFamily="@font/font1"
             android:background="#FFFFFF"
@@ -26,16 +26,14 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/smartphone"
-                android:drawablePadding="10dp"
-                android:text="주문이 들어왔습니다"
-                android:textSize="15dp"
+                android:text="👏배닭 완료!👏"
+                android:textSize="30dp"
                 android:fontFamily="@font/font1"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:id="@+id/btn_list"/>
+                android:padding="35dp"
+                android:layout_margin="15dp"
+                android:id="@+id/btn_ok"/>
 
     </LinearLayout>
 
@@ -48,16 +46,14 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/laptop"
-            android:drawablePadding="10dp"
-            android:text="주문이 취소되었습니다"
-            android:textSize="15dp"
+            android:text="🥺배닭 취소🥺"
+            android:textSize="30dp"
             android:fontFamily="@font/font1"
-            android:background="#FFFFFF"
+            android:background="#80FFFFFF"
             android:layout_weight="1"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:id="@+id/btn_list_cancel"/>
+            android:padding="35dp"
+            android:layout_margin="15dp"
+            android:id="@+id/btn_cancel"/>
 
     </LinearLayout>
 
@@ -70,16 +66,14 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/soldout"
-                android:drawablePadding="10dp"
-                android:text="그만 팔고 싶습니다"
-                android:textSize="15dp"
+                android:text="😬배닭중😬"
+                android:textSize="30dp"
                 android:fontFamily="@font/font1"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:id="@+id/btn_list_menu"/>
+                android:padding="35dp"
+                android:layout_margin="15dp"
+                android:id="@+id/btn_do"/>
 
     </LinearLayout>
 

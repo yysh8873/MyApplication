@@ -74,12 +74,12 @@ public class ManagerList extends AppCompatActivity {
             data.setDate(listDate.get(i));
             data.setBtn("설정");
             data.setDlgTitle("주문 상태 설정");
-            data.setDlgMsg("선택한 주문의 설정을 선택해주세요");
-            data.setDlgItems(items, 0, new DialogInterface.OnClickListener() {
+            data.setDlgMsg("선택한 주문의 설정을 변경하시겠습니까?");
+            data.setDlgPB(new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(ManagerList.this, "설정 변경 완료",
-                            Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), ManagerChoice.class);
+                    startActivity(intent);
                 }
             });
 

@@ -5,14 +5,15 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name= "android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="hansinIdalg"
             android:roundIcon="@drawable/chicken"
             android:supportsRtl="true"
+            android:usesCleartextTraffic="true"
             android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -43,6 +44,9 @@
         <activity android:name="com.example.myapplication.ManagerList" android:label="ManagerList 액티비티" />
         <activity android:name="com.example.myapplication.ManagerListCancel" android:label="ManagerListCancel 액티비티" />
         <activity android:name="com.example.myapplication.ManagerListMenu" android:label="ManagerListMenu 액티비티" />
+        <activity android:name="com.example.myapplication.ManagerChoice" android:label="ManagerChoice 액티비티" />
+        <activity android:name="com.example.myapplication.ManagerChoice2" android:label="ManagerChoice2 액티비티" />
+        <activity android:name="com.example.myapplication.SearchAddress" android:label="SearchAddress 액티비티" />
     </application>
 
 </manifest>
