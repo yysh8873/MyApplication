@@ -116,20 +116,11 @@
                 android:id="@+id/text_AD"/>
 
         <EditText
-                android:id="@+id/status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:text="아직 수신되지 않았음"
-                android:textSize="20dp"
-                android:fontFamily="@font/font1" />
-
-        <EditText
                 android:layout_width="match_parent"
                 android:layout_marginRight="40dp"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
-                android:hint="도로명주소 검색"
+                android:hint="주소를 입력해주세요"
                 android:textSize="15dp"
                 android:maxLength="13"
                 android:layout_gravity="left"

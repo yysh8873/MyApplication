@@ -19,7 +19,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="🥳👏인기메뉴 순위👍"
+                android:text="🥳👏주문 추천 가이드👍"
                 android:textSize="20dp"
                 android:textAlignment="center"
                 android:fontFamily="@font/font1"
@@ -31,72 +31,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#EFEFEF">
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/menu1"
-                    android:drawablePadding="10dp"
-                    android:text="안동찜닭"
-                    android:textSize="15dp"
-                    android:fontFamily="@font/font1"
-                    android:background="#FFFFFF"
-                    android:layout_gravity="center"
-                    android:padding="10dp"
-                    android:layout_margin="10dp"
-                    android:id="@+id/btn_menu1"/>
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="간장소스를 베이스로\n 한약재를 첨가하여\n 남녀노소 모두가\n 즐길 수 있는 메뉴"
-                    android:textSize="20dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/font1"/>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#EFEFEF">
 
 
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/menu2"
+                    android:drawableTop="@drawable/chicken"
                     android:drawablePadding="10dp"
-                    android:text="고추장찜닭"
-                    android:textSize="15dp"
-                    android:fontFamily="@font/font1"
-                    android:background="#FFFFFF"
-                    android:padding="10dp"
-                    android:layout_margin="10dp"
-                    android:id="@+id/btn_menu2"/>
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="안동찜닭보다\n 한층 업그레이드 한\n 고추장 소스를\n 기반으로 만들어\n 국물이 일품인 메뉴"
-                    android:textSize="20dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/font1"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#EFEFEF">
-
-
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/menu3"
-                    android:drawablePadding="10dp"
-                    android:text="치즈순살찜닭"
+                    android:text="소 / 중 / 대"
                     android:textSize="15dp"
                     android:fontFamily="@font/font1"
                     android:background="#FFFFFF"
@@ -107,7 +49,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="천연양념과 닭다리살로만\n 조리 후 천연 모짜렐라\n 치즈를 얹어 맛을 낸\n 맛있는 메뉴"
+                    android:text="2인 - 소\n3인 - 소 / 중\n4인 - 중 / 대\n5인이상 - 대"
                     android:textSize="20dp"
                     android:layout_gravity="center"
                     android:textAlignment="center"
@@ -122,9 +64,9 @@
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/menu1"
-                    android:drawablePadding="10dp"
-                    android:text="순살 안동찜닭"
+                    android:drawableTop="@drawable/hot"
+                    android:drawablePadding="8dp"
+                    android:text="순한/중간\n/매운맛"
                     android:textSize="15dp"
                     android:fontFamily="@font/font1"
                     android:background="#FFFFFF"
@@ -134,12 +76,13 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="천연양념과 닭다리살로만\n 조리하여 육질이\n 예술이며 최고급\n 웰빙 메뉴"
+                    android:text="순한맛 - 담백하고 부드러운 맛\n중간맛 - 살짝 매콤한 맛\n매운맛 - 알싸한 고추맛"
                     android:textSize="20dp"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:fontFamily="@font/font1"/>
         </LinearLayout>
+
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -148,9 +91,9 @@
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/menu2"
+                    android:drawableTop="@drawable/stamina"
                     android:drawablePadding="10dp"
-                    android:text="순살 고추장찜닭"
+                    android:text="추가 토핑"
                     android:textSize="15dp"
                     android:fontFamily="@font/font1"
                     android:background="#FFFFFF"
@@ -160,12 +103,75 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="안동찜닭보다\n 한층 업그레이드 한\n 고추장 소스를\n 기반으로 만들어\n 국물이 일품인 메뉴"
+                    android:text="당면 - 씹는 맛! 쫄깃한 당면\n감자 - 고소한 맛! 감자\n만두 - 맛있는 맛! 고기 만두"
                     android:textSize="20dp"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:fontFamily="@font/font1"/>
         </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFEFEF">
+
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/rice"
+                    android:drawablePadding="10dp"
+                    android:text="공깃밥"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/font1"
+                    android:background="#FFFFFF"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:id="@+id/btn_menu2"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="공깃밥+김+참기름+찜닭 = 끝"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/font1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFEFEF">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/soju"
+                    android:drawablePadding="10dp"
+                    android:text="소주"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/font1"
+                    android:background="#FFFFFF"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:id="@+id/btn_menu1"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="베스트 안주가 될 수 있는 찜닭!"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/font1"/>
+        </LinearLayout>
+
+
+
+
 
     </LinearLayout>
 
