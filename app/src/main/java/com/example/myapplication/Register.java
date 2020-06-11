@@ -1,16 +1,9 @@
 package com.example.myapplication;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.DialogInterface;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,12 +13,13 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
+
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -33,8 +27,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import android.app.ProgressDialog;
 
 
 public class Register extends AppCompatActivity {
@@ -50,7 +42,7 @@ public class Register extends AppCompatActivity {
     private EditText mEditTextPw;
     private EditText mEditTextName;
     private EditText mEditTextPhone;
-    private EditText mEditTextAddr;
+    private EditText mEditTextAdd;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,7 +59,7 @@ public class Register extends AppCompatActivity {
         mEditTextPw = (EditText) findViewById(R.id.edit_PW);
         mEditTextName = (EditText) findViewById(R.id.edit_Name);
         mEditTextPhone = (EditText) findViewById(R.id.edit_Phone);
-        mEditTextAddr = (EditText) findViewById(R.id.edit_AD);
+        mEditTextAdd = (EditText) findViewById(R.id.edit_AD);
 
         Button btn_register = (Button) findViewById(R.id.btn_register);
 /*
@@ -95,26 +87,28 @@ public class Register extends AppCompatActivity {
                 String str_PW = mEditTextPw.getText().toString();
                 String str_Name = mEditTextName.getText().toString();
                 String str_Phone = mEditTextPhone.getText().toString();
-                String str_Adr = mEditTextAddr.getText().toString();
+                String str_Adr = mEditTextAdd.getText().toString();
+
+                //System.out.println(str_ID+str_PW+str_Name+str_Phone+str_Adr); //데이터 확인용 -> 잘 입력됨
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
 
                 InsertData task = new InsertData();
-
                 task.execute("http://"+IP_ADDRESS+"/register.php",str_ID, str_PW,str_Name,str_Phone,str_Adr);
+
                 mEditTextId.setText("");
                 mEditTextPw.setText("");
                 mEditTextName.setText("");
                 mEditTextPhone.setText("");
-                mEditTextAddr.setText("");
+                mEditTextAdd.setText("");
             }
         });
     }
 
 
     class InsertData extends AsyncTask<String, Void, String>{
-        /*
+
         ProgressDialog progressDialog;
 
         @Override
@@ -124,16 +118,26 @@ public class Register extends AppCompatActivity {
             progressDialog = ProgressDialog.show(Register.this,
                     "Please Wait", null, true, true);
         }
-        */
+
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+        }
+
+
 
         @Override
         protected String doInBackground(String... params) {
 
-            String name = (String)params[1];
-            String country = (String)params[2];
+            String uid = (String)params[1];
+            String pw = (String)params[2];
+            String name = (String)params[3];
+            String adr = (String)params[4];
+            String phone = (String)params[5];
 
             String serverURL = (String)params[0];
-            String postParameters = "name=" + name + "&country=" + country;
+            String postParameters = "uid=" + uid + "&pw=" + pw+"&name="+name+"&adr="+adr+"&phone="+phone;
 
 
             try {
