@@ -4,10 +4,10 @@ import android.content.DialogInterface;
 
 public class Data {
 
-    private String title;
-    private String content;
-    private String content2;
-    private String date;
+    private String title;       // 메뉴명
+    private String content;     // 가격 및 주문자 이름
+    private String content2;    // 가격
+    private String date;        // 날짜
     private String btn;
 
     private String dlgTitle;

@@ -99,7 +99,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
                     dlg.setNegativeButton("취소", null);
                     dlg.show();
                     break;
-                case R.id.textView1:
+               /* case R.id.textView1:
                     Toast.makeText(context, data.getTitle(), Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.textView2:
@@ -110,7 +110,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
                     break;
                 case R.id.textView4:
                     Toast.makeText(context, data.getContent2(), Toast.LENGTH_SHORT).show();
-                    break;
+                    break;*/
             }
         }
     }
