@@ -87,15 +87,15 @@ public class Register extends AppCompatActivity {
                 String str_PW = mEditTextPw.getText().toString();
                 String str_Name = mEditTextName.getText().toString();
                 String str_Phone = mEditTextPhone.getText().toString();
-                String str_Adr = mEditTextAdd.getText().toString();
+                String str_Addr = mEditTextAdd.getText().toString();
 
-                //System.out.println(str_ID+str_PW+str_Name+str_Phone+str_Adr); //데이터 확인용 -> 잘 입력됨
+                //System.out.println(str_ID+str_PW+str_Name+str_Phone+str_Addr); //데이터 확인용 -> 잘 입력됨
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
 
                 InsertData task = new InsertData();
-                task.execute("http://"+IP_ADDRESS+"/register.php",str_ID, str_PW,str_Name,str_Phone,str_Adr);
+                task.execute("http://"+IP_ADDRESS+"/register.php",str_ID, str_PW,str_Name,str_Phone,str_Addr);
 
                 mEditTextId.setText("");
                 mEditTextPw.setText("");
@@ -133,11 +133,11 @@ public class Register extends AppCompatActivity {
             String uid = (String)params[1];
             String pw = (String)params[2];
             String name = (String)params[3];
-            String adr = (String)params[4];
+            String addr = (String)params[4];
             String phone = (String)params[5];
 
             String serverURL = (String)params[0];
-            String postParameters = "uid=" + uid + "&pw=" + pw+"&name="+name+"&adr="+adr+"&phone="+phone;
+            String postParameters = "uid=" + uid + "&pw=" + pw+"&name="+name+"&addr="+addr+"&phone="+phone;
 
 
             try {
