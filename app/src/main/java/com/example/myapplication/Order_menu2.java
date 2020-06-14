@@ -40,6 +40,11 @@ public class Order_menu2 extends AppCompatActivity {
         final CheckBox checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
         final CheckBox checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
 
+        Intent preIntent = getIntent();
+        int rice = preIntent.getExtras().getInt("rice");
+        int juice = preIntent.getExtras().getInt("juice");
+        int soju = preIntent.getExtras().getInt("soju");
+
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,25 +68,7 @@ public class Order_menu2 extends AppCompatActivity {
 
         final ListView listView = findViewById(R.id.listView);
         listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-                new String[]{"공기밥", "소주"}));
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        AlertDialog.Builder dlg1 = new AlertDialog.Builder(Order_menu2.this);
-                        dlg1.setTitle("장바구니 삭제");
-                        dlg1.setMessage("장바구니에서 " + parent.getItemAtPosition(position) + "를 삭제하시겠습니까?");
-                        dlg1.setIcon(R.drawable.delete);
-                        dlg1.setPositiveButton("확인",null);
-                        dlg1.show();
-                    }
-                });
-            }
-        });
-
+                new String[]{"공기밥: "+rice+"개", "탄산음료(1.25L): "+juice+"개", "소주: "+soju+"개"}));
     }
 
 
