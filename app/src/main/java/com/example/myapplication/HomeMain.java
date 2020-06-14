@@ -74,8 +74,16 @@ public class HomeMain extends Fragment{
             }
         });
 
-        return viewGroup;
+        Button btn_pay = (Button) viewGroup.findViewById(R.id.fndpay);
+        btn_app.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), App.class);
+                startActivity(intent);
+            }
+        });
 
+        return viewGroup;
     }
 
 }
