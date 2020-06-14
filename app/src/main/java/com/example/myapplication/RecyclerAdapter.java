@@ -90,7 +90,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btn:
-                    Toast.makeText(context, "TITLE : " + data.getTitle() + "\nContent : " + data.getContent(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "TITLE : " + data.getTitle() + "\nContent : " + data.getContent(), Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder dlg = new AlertDialog.Builder(context);
                     dlg.setTitle(data.getDlgTitle());
                     dlg.setMessage(data.getDlgMsg());
