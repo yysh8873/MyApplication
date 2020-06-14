@@ -99,12 +99,12 @@ public class Payment extends AppCompatActivity {
         }
 
         if (id2 == R.id.rbtn_2_1) {
+            listContent2.add("오리지널맛");
+            str_Menu += "(오리지널맛) ";
+        } else if (id2 == R.id.rbtn_2_2) {
             listContent2.add("순한맛");
             str_Menu += "(순한맛) ";
-        } else if (id1 == R.id.rbtn_2_2) {
-            listContent2.add("중간맛");
-            str_Menu += "(중간맛) ";
-        } else {
+        } else if (id2 == R.id.rbtn_2_3){
             listContent2.add("매운맛");
             str_Menu += "(매운맛) ";
         }
@@ -305,10 +305,10 @@ public class Payment extends AppCompatActivity {
         }
 
         if (id2 == R.id.rbtn_2_1) {
+            listContent2.add("오리지널맛");
+        } else if (id2 == R.id.rbtn_2_2) {
             listContent2.add("순한맛");
-        } else if (id1 == R.id.rbtn_2_2) {
-            listContent2.add("중간맛");
-        } else {
+        } else if (id2 == R.id.rbtn_2_3){
             listContent2.add("매운맛");
         }
 
