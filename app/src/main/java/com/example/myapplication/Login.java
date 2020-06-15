@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,8 +14,33 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class Login extends AppCompatActivity {
+    //private static String IP_ADDRESS="13.125.45.205";
+    private static String TAG = "MyApplication";
+
+    ArrayList<HashMap<String, String>> mArrayList;
+    EditText mEditTextID, mEditTextPw;
+    ListView mListViewList;
+    String mJsonString;
+    private TextView mTextViewResult;
+
+    private static final String TAG_JSON="webnautes";
+    private static final String TAG_ID ="id";
+    private static final String TAG_PW ="pw";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,28 +55,167 @@ public class Login extends AppCompatActivity {
 
         Button btn_login = (Button) findViewById(R.id.btn_login);
 
+        mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
+        mListViewList = (ListView) findViewById(R.id.listView_main_list);
+        mEditTextID = (EditText) findViewById(R.id.edit_ID);
+        mEditTextPw = (EditText) findViewById(R.id.edit_PW);
+
+        /*
         final EditText edit_ID = (EditText) findViewById(R.id.edit_ID);
         String str_ID = edit_ID.getText().toString();
 
         final EditText edit_PW = (EditText) findViewById(R.id.edit_PW);
         String str_PW = edit_PW.getText().toString();
+        */
 
         final CheckBox checkbox = (CheckBox) findViewById(R.id.checkbox);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                mArrayList.clear();
+                GetData task = new GetData();
+
                 if(checkbox.isChecked()){
                     Intent intent = new Intent(getApplicationContext(), HomeManager.class);
                     startActivity(intent);
+                    // php파일에서 멤버/관리자 추가 해야함
+                    task.execute(mEditTextID.getText().toString(), mEditTextPw.getText().toString(),"2");
                 }
                 else {
                     Intent intent = new Intent(getApplicationContext(), Home.class);
                     startActivity(intent);
+                    task.execute(mEditTextID.getText().toString(), mEditTextPw.getText().toString(),"1");
                 }
-
             }
         });
+        mArrayList = new ArrayList<>();
+    }
+
+
+    private class GetData extends AsyncTask<String, Void, String> {
+
+        ProgressDialog progressDialog;
+        String errorString = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(Login.this,
+                    "Please Wait", null, true, true);
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+            //mTextViewResult.setText(result);
+            Log.d(TAG, "response - " + result);
+
+            if (result == null){
+
+                mTextViewResult.setText(errorString);
+            }
+            else {
+                mJsonString = result;
+                showResult();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String id = params[0];
+            String pw = params[1];
+            String uservalue = params[2];
+
+            String serverURL = "http://13.125.45.205/login.php";
+            String postParameters = "uid=" + id + "&pw=" + pw + "&uservalue=" + uservalue;
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                // php가 echo한 문자열 받아옴
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+                bufferedReader.close();
+                return sb.toString().trim();
+
+            } catch (Exception e) {
+                Log.d(TAG, "InsertData: Error ", e);
+                errorString = e.toString();
+                return null;
+            }
+
+        }
+    }
+
+    private void showResult() {
+        try {
+            JSONObject jsonObject = new JSONObject(mJsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject item = jsonArray.getJSONObject(i);
+
+                String id = item.getString(TAG_ID);
+
+                HashMap<String, String> hashMap = new HashMap<>();
+
+                hashMap.put(TAG_ID, id);
+
+                mArrayList.add(hashMap);
+            }
+
+            ListAdapter adapter = new SimpleAdapter(
+                    Login.this, mArrayList, R.layout.item_list,
+                    new String[]{TAG_ID},
+                    new int[]{R.id.textView_list_id}
+            );
+
+            mListViewList.setAdapter(adapter);
+
+        } catch (JSONException e) {
+
+            Log.d(TAG, "showResult : ", e);
+        }
+
     }
 
     @Override
