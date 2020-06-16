@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools" package="com.example.myapplication">
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name= "android.permission.ACCESS_FINE_LOCATION" />
@@ -18,7 +17,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
@@ -28,6 +26,7 @@
         <activity android:name="com.example.myapplication.Home" android:label="한신이닭" />
         <activity android:name="com.example.myapplication.HomeMain" android:label="HomeMain 액티비티" />
         <activity android:name="com.example.myapplication.Order" android:label="Order 액티비티" />
+        <activity android:name="com.example.myapplication.Charge" android:label="Order 액티비티" />
         <activity android:name="com.example.myapplication.Order_menu1" android:label="Order_menu1 액티비티" />
         <activity android:name="com.example.myapplication.Order_menu2" android:label="Order_menu2 액티비티" />
         <activity android:name="com.example.myapplication.Order_menu3" android:label="Order_menu3 액티비티" />
@@ -43,7 +42,7 @@
         <activity android:name="com.example.myapplication.HomeManagerMain" android:label="HomeManagerMain 액티비티" />
         <activity android:name="com.example.myapplication.ManagerList" android:label="ManagerList 액티비티" />
         <activity android:name="com.example.myapplication.ManagerListCancel" android:label="ManagerListCancel 액티비티" />
-        <activity android:name="com.example.myapplication.ManagerListMenu" android:label="ManagerListMenu 액티비티" />
+        <activity android:name="com.example.myapplication.ManagerListSold" android:label="ManagerListMenu 액티비티" />
         <activity android:name="com.example.myapplication.ManagerChoice" android:label="ManagerChoice 액티비티" />
         <activity android:name="com.example.myapplication.ManagerChoice2" android:label="ManagerChoice2 액티비티" />
     </application>

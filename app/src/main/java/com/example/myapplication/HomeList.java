@@ -33,13 +33,10 @@ import java.util.List;
 
 public class HomeList extends Fragment{
     ViewGroup viewGroup;
-    private RecyclerView recyclerview;
-    private RecyclerAdapter adapter;
-    private Object HomeList;
 
     String serverURL = "http://13.125.45.205/orderlist.php";
     private static String IP_ADDRESS = "13.125.45.205";
-    private static String TAG = "myapplication";
+    private static String TAG = "phpquerytest";
 
     private static final String TAG_JSON="webnautes";
     private static final String TAG_OID = "oid";
@@ -54,8 +51,9 @@ public class HomeList extends Fragment{
     private TextView mTextViewResult;
     ArrayList<HashMap<String, String>> mArrayList;
     ListView mListViewList;
-    EditText mEditTextSearchKeyword1, mEditTextSearchKeyword2;
     String mJsonString;
+
+    String id = "so"; // 나중에 로그인 세션 받아오기
 
     @Nullable
     @Override
@@ -64,34 +62,19 @@ public class HomeList extends Fragment{
 
         mTextViewResult = (TextView)viewGroup.findViewById(R.id.textView_main_result);
         mListViewList = (ListView) viewGroup.findViewById(R.id.listView_main_list);
-        mEditTextSearchKeyword1 = (EditText) viewGroup.findViewById(R.id.editText_main_searchKeyword1);
-        System.out.println("로그" + mEditTextSearchKeyword1.getText().toString());
 
-        Button button_search = (Button) viewGroup.findViewById(R.id.button_main_search);
-        button_search.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        //mArrayList.clear();
 
-                mArrayList.clear();
-
-                GetData task = new GetData();
-                task.execute(mEditTextSearchKeyword1.getText().toString());
-
-            }
-        });
-
+        GetData task = new GetData();
+        task.execute(id);
 
         mArrayList = new ArrayList<>();
-
-        // 리스트 연결
-        init();
-
-        getData();
 
         return viewGroup;
 
     }
 
-    class GetData extends AsyncTask<String, Void, String> {
+    private class GetData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String errorString = null;
 
@@ -99,7 +82,7 @@ public class HomeList extends Fragment{
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show((Context) HomeList,
+            progressDialog = ProgressDialog.show(getActivity(),
                     "Please Wait", null, true, true);
         }
 
@@ -109,7 +92,7 @@ public class HomeList extends Fragment{
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            mTextViewResult.setText("sival");
+            //mTextViewResult.setText(result);
             Log.d(TAG, "response - " + result);
 
             if (result == null){
@@ -128,17 +111,12 @@ public class HomeList extends Fragment{
         protected String doInBackground(String... params) {
 
             String searchKeyword1 = params[0];
-            String searchKeyword2 = params[1];
-
-            String serverURL = "http://13.125.45.205/orderlist.php";
             String postParameters = "uid=" + searchKeyword1;
 
 
             try {
-
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
@@ -184,7 +162,7 @@ public class HomeList extends Fragment{
 
             } catch (Exception e) {
 
-                Log.d(TAG, "InsertData: Error ", e);
+                Log.d(TAG, "Data: Error ", e);
                 errorString = e.toString();
 
                 return null;
@@ -236,12 +214,13 @@ public class HomeList extends Fragment{
             }
 
             ListAdapter adapter = new SimpleAdapter(
-                    (Context) HomeList, mArrayList, R.layout.item_list,
-                    new String[]{TAG_OID,TAG_TDATE, TAG_UID},
-                    new int[]{R.id.textView_list_id, R.id.textView_list_name, R.id.textView_list_address}
+                    getActivity(), mArrayList, R.layout.item_list,
+                    new String[]{TAG_MENU, TAG_PRICE, TAG_ADDR, TAG_TDATE},
+                    new int[]{R.id.textView1, R.id.textView4, R.id.textView2, R.id.textView3}
             );
 
             mListViewList.setAdapter(adapter);
+
 
         } catch (JSONException e) {
 
@@ -251,56 +230,5 @@ public class HomeList extends Fragment{
     }
 
 
-    
-    private void init() {
-        RecyclerView recyclerView = viewGroup.findViewById(R.id.recyclerView);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) HomeList);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        adapter = new RecyclerAdapter();
-        recyclerView.setAdapter(adapter);
-    }
-
-    private void getData() {
-
-        // 임의의 데이터입니다.
-        List<String> listTitle = Arrays.asList("안동찜닭", "치즈순살찜닭", "고추장찜닭");
-        List<String> listContent = Arrays.asList(
-                "18000원",
-                "20000원",
-                "18000원"
-        );
-        List<String> listDate = Arrays.asList(
-                "2020-05-03",
-                "2020-05-02",
-                "2020-05-01"
-        );
-
-
-        for (int i = 0; i < listTitle.size(); i++) {
-            // 각 List의 값들을 data 객체에 set 해줍니다.
-            Data data = new Data();
-            data.setTitle(listTitle.get(i));
-            data.setContent(listContent.get(i));
-            data.setDate(listDate.get(i));
-            data.setBtn("선택");
-            data.setDlgTitle("결제 내역 상세보기");
-            data.setDlgMsg("주문 내역:  \n주문 일시: \n 주소: \n총 금액: \n결제 방법:  등\n\n\n\n포함 정보 가져오기");
-            data.setDlgPB(new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText((Context) HomeList, "장바구니 담았습니다",
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            // 각 값이 들어간 data를 adapter에 추가합니다.
-            adapter.addItem(data);
-        }
-
-        // adapter의 값이 변경되었다는 것을 알려줍니다.
-        adapter.notifyDataSetChanged();
-    }
 }
 

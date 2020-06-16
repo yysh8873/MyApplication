@@ -29,20 +29,11 @@ public class HomeMain extends Fragment{
             }
         });
 
-        Button btn_pick = (Button) viewGroup.findViewById(R.id.btn_pick);
-        btn_pick.setOnClickListener(new View.OnClickListener() {
+        Button btn_charge = (Button) viewGroup.findViewById(R.id.btn_charge);
+        btn_charge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Order.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btn_hall = (Button) viewGroup.findViewById(R.id.btn_hall);
-        btn_hall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Order.class);
+                Intent intent = new Intent(getActivity(), Charge.class);
                 startActivity(intent);
             }
         });

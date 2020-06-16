@@ -25,9 +25,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ManagerList extends AppCompatActivity {
+public class ManagerListSold extends AppCompatActivity {
 
-    String serverURL = "http://13.125.45.205/orderlistall0.php";
+    String serverURL = "http://13.125.45.205/orderlistall1.php";
     private static String IP_ADDRESS = "13.125.45.205";
     private static String TAG = "phpquerytest";
 
@@ -66,48 +66,6 @@ public class ManagerList extends AppCompatActivity {
         task.execute("*");
 
         mArrayList = new ArrayList<>();
-
-        mListViewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder dlg1 = new AlertDialog.Builder(ManagerList.this);
-                dlg1.setTitle("주문 설정 변경");
-                dlg1.setMessage("배달 완료로 설정하시겠습니까?");
-                dlg1.setIcon(R.drawable.chicken);
-                dlg1.setPositiveButton("확인",yesButtonClickListener);
-                dlg1.show();
-            }
-
-            private DialogInterface.OnClickListener yesButtonClickListener = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // 코드 변경
-
-
-                }
-            };
-        });
-
-        mListViewList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder dlg1 = new AlertDialog.Builder(ManagerList.this);
-                dlg1.setTitle("주문 설정 변경");
-                dlg1.setMessage("주문 취소로 설정하시겠습니까?");
-                dlg1.setIcon(R.drawable.chicken);
-                dlg1.setPositiveButton("확인",yesButtonClickListener2);
-                dlg1.show();
-
-                return false;
-            }
-
-            private DialogInterface.OnClickListener yesButtonClickListener2 = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // 코드 변경
-                }
-            };
-        });
     }
 
     private class GetData extends AsyncTask<String, Void, String> {
@@ -118,7 +76,7 @@ public class ManagerList extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(ManagerList.this,
+            progressDialog = ProgressDialog.show(ManagerListSold.this,
                     "Please Wait", null, true, true);
         }
 
@@ -249,7 +207,7 @@ public class ManagerList extends AppCompatActivity {
             }
 
             ListAdapter adapter = new SimpleAdapter(
-                    ManagerList.this, mArrayList, R.layout.item_list2,
+                    ManagerListSold.this, mArrayList, R.layout.item_list2,
                     new String[]{TAG_MENU, TAG_UID, TAG_PRICE, TAG_ADDR, TAG_TDATE},
                     new int[]{R.id.textView1, R.id.textView5, R.id.textView4, R.id.textView2, R.id.textView3}
             );
