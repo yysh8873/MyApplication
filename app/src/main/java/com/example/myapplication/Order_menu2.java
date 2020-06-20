@@ -41,9 +41,9 @@ public class Order_menu2 extends AppCompatActivity {
         final CheckBox checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
 
         Intent preIntent = getIntent();
-        int rice = preIntent.getExtras().getInt("rice");
-        int juice = preIntent.getExtras().getInt("juice");
-        int soju = preIntent.getExtras().getInt("soju");
+        final int rice = preIntent.getExtras().getInt("rice");
+        final int juice = preIntent.getExtras().getInt("juice");
+        final int soju = preIntent.getExtras().getInt("soju");
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +61,9 @@ public class Order_menu2 extends AppCompatActivity {
                 intent.putExtra("c1", c1);
                 intent.putExtra("c2", c2);
                 intent.putExtra("c3", c3);
+                intent.putExtra("rice", rice);
+                intent.putExtra("juice", juice);
+                intent.putExtra("soju", soju);
 
                 startActivity(intent);
             }
