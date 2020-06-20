@@ -65,18 +65,14 @@ public class Register extends AppCompatActivity {
 /*
         final EditText edit_ID = (EditText) findViewById(R.id.edit_ID);
         String str_ID = edit_ID.getText().toString();
-
         final EditText edit_PW = (EditText) findViewById(R.id.edit_PW);
         String str_PW = edit_PW.getText().toString();
-
         final EditText edit_Name = (EditText) findViewById(R.id.edit_Name);
         String str_Name = edit_Name.getText().toString();
-
         final EditText edit_Phone = (EditText) findViewById(R.id.edit_Phone);
         String str_Phone = edit_Phone.getText().toString();
         // 연락처 입력시 하이픈(-) 자동 입력.
         edit_Phone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
-
         final EditText edit_AD = (EditText) findViewById(R.id.edit_AD);
  */
 

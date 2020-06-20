@@ -37,11 +37,11 @@ public class HomeManagerMain extends Fragment {
             }
         });
 
-        Button btn_list_menu = (Button) viewGroup.findViewById(R.id.btn_list_menu);
-        btn_list_menu.setOnClickListener(new View.OnClickListener() {
+        Button btn_list_sold = (Button) viewGroup.findViewById(R.id.btn_list_sold);
+        btn_list_sold.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ManagerListMenu.class);
+                Intent intent = new Intent(getActivity(), ManagerListSold.class);
                 startActivity(intent);
             }
         });

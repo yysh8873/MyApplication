@@ -30,7 +30,7 @@ import java.util.HashMap;
 
 public class Login extends AppCompatActivity {
     //private static String IP_ADDRESS="13.125.45.205";
-    private static String TAG = "MyApplication";
+    private static String TAG = "phpquerytest";
 
     ArrayList<HashMap<String, String>> mArrayList;
     EditText mEditTextID, mEditTextPw;
@@ -206,7 +206,7 @@ public class Login extends AppCompatActivity {
             ListAdapter adapter = new SimpleAdapter(
                     Login.this, mArrayList, R.layout.item_list,
                     new String[]{TAG_ID},
-                    new int[]{R.id.textView_list_id}
+                    new int[]{R.id.textView1}
             );
 
             mListViewList.setAdapter(adapter);

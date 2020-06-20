@@ -41,30 +41,16 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/food"
-                android:drawablePadding="10dp"
-                android:text="포장주문"
-                android:textSize="15dp"
-                android:fontFamily="@font/font1"
-                android:background="#FFFFFF"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:id="@+id/btn_pick"/>
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:drawableTop="@drawable/smartphone"
                 android:drawablePadding="10dp"
-                android:text="홀주문"
+                android:text="포인트 충전"
                 android:textSize="15dp"
                 android:fontFamily="@font/font1"
                 android:background="#FFFFFF"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:layout_margin="10dp"
-                android:id="@+id/btn_hall"/>
+                android:id="@+id/btn_charge"/>
 
     </LinearLayout>
 

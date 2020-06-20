@@ -21,7 +21,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFCFCF">
+            android:background="@color/colorPink">
 
         <Button
                 android:layout_width="wrap_content"
@@ -72,14 +72,14 @@
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/soldout"
                 android:drawablePadding="10dp"
-                android:text="그만 팔고 싶습니다"
+                android:text="이미 팔았습니다"
                 android:textSize="15dp"
                 android:fontFamily="@font/font1"
                 android:background="#FFFFFF"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:layout_margin="10dp"
-                android:id="@+id/btn_list_menu"/>
+                android:id="@+id/btn_list_sold"/>
 
     </LinearLayout>
 
