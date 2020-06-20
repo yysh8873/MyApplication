@@ -43,8 +43,6 @@
         <activity android:name="com.example.myapplication.ManagerList" android:label="ManagerList 액티비티" />
         <activity android:name="com.example.myapplication.ManagerListCancel" android:label="ManagerListCancel 액티비티" />
         <activity android:name="com.example.myapplication.ManagerListSold" android:label="ManagerListMenu 액티비티" />
-        <activity android:name="com.example.myapplication.ManagerChoice" android:label="ManagerChoice 액티비티" />
-        <activity android:name="com.example.myapplication.ManagerChoice2" android:label="ManagerChoice2 액티비티" />
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,8 +54,6 @@ public class HomeList extends Fragment{
     ListView mListViewList;
     String mJsonString;
 
-    String id = "so"; // 나중에 로그인 세션 받아오기
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,6 +61,9 @@ public class HomeList extends Fragment{
 
         mTextViewResult = (TextView)viewGroup.findViewById(R.id.textView_main_result);
         mListViewList = (ListView) viewGroup.findViewById(R.id.listView_main_list);
+
+        Bundle bundle = getArguments();
+        String id = bundle.getString("uid");
 
         //mArrayList.clear();
 

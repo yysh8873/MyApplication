@@ -67,6 +67,8 @@
                 android:fontFamily="@font/font1"
                 android:layout_gravity="right"
                 android:textColor="@android:color/darker_gray"/>
+
+
     </LinearLayout>
 
 </LinearLayout>

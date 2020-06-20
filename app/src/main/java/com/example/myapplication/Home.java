@@ -26,14 +26,22 @@ public class Home extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);   //업버튼 <- 만들기
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+        // login에서 값 받아서 저장
+        Intent intent = getIntent();
+        String uid = intent.getStringExtra("uid");
+
         //프래그먼트 생성
         homeMain = new HomeMain();
         homeList = new HomeList();
         popular = new Popular();
 
+        //번들객체 생성, uid값 저장
+        final Bundle bundle = new Bundle();
+        bundle.putString("uid", uid);
+
         //제일 처음 띄워줄 뷰를 세팅해줍니다. commit();까지 해줘야 합니다.
         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, homeMain).commitAllowingStateLoss();
-
+        homeMain.setArguments(bundle);
         //bottomnavigationview의 아이콘을 선택 했을때 원하는 프래그먼트가 띄워질 수 있도록 리스너를 추가합니다.
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -46,6 +54,7 @@ public class Home extends AppCompatActivity {
                         return true;
                     } case R.id.tab2:{ getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_layout, homeList).commitAllowingStateLoss();
+                            homeList.setArguments(bundle);
                     return true;
                     } case R.id.tab3:{ getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_layout, popular).commitAllowingStateLoss();
