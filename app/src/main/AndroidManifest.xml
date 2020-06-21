@@ -43,6 +43,8 @@
         <activity android:name="com.example.myapplication.ManagerList" android:label="ManagerList 액티비티" />
         <activity android:name="com.example.myapplication.ManagerListCancel" android:label="ManagerListCancel 액티비티" />
         <activity android:name="com.example.myapplication.ManagerListSold" android:label="ManagerListMenu 액티비티" />
+        <activity android:name="com.example.myapplication.PayBTFriend" android:label="PayBTFriend 액티비티" />
+        <activity android:name="com.example.myapplication.PayBTOrder" android:label="PayBTOrder 액티비티" />
     </application>
 
 </manifest>

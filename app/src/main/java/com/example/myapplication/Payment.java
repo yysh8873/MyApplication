@@ -179,7 +179,9 @@ public class Payment extends AppCompatActivity {
             private DialogInterface.OnClickListener yesButtonClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                  // 블루투스 연결 코드
+                    Intent btintent = new Intent(getApplicationContext(), PayBTOrder.class);
+                    btintent.putExtra("cost", cost);
+                    startActivity(btintent);
                 }
             };
         });

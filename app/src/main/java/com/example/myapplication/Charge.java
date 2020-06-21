@@ -63,7 +63,7 @@ public class Charge extends AppCompatActivity {
         final EditText edit_point = (EditText) findViewById(R.id.edit_point);
 
         Intent intent = getIntent();
-        String uid = intent.getStringExtra("uid");
+        final String uid = intent.getStringExtra("uid");
 
 
         Button btn_charge = (Button) findViewById(R.id.btn_charge);

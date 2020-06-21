@@ -21,7 +21,7 @@ public class HomeMain extends Fragment{
         viewGroup = (ViewGroup) inflater.inflate(R.layout.home_main,container,false);
 
         Bundle bundle = getArguments();
-        String uid = bundle.getString("uid");
+        final String uid = bundle.getString("uid");
 
         Button btn_delivery = (Button) viewGroup.findViewById(R.id.btn_delivery);
         btn_delivery.setOnClickListener(new View.OnClickListener() {
@@ -42,11 +42,11 @@ public class HomeMain extends Fragment{
             }
         });
 
-        Button btn_menu = (Button) viewGroup.findViewById(R.id.btn_menu);
-        btn_menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Menu.class);
+                Button btn_menu = (Button) viewGroup.findViewById(R.id.btn_menu);
+                btn_menu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), Menu.class);
                 startActivity(intent);
             }
         });
@@ -70,11 +70,11 @@ public class HomeMain extends Fragment{
             }
         });
 
-        Button btn_pay = (Button) viewGroup.findViewById(R.id.fndpay);
-        btn_app.setOnClickListener(new View.OnClickListener() {
+        Button btn_pay = (Button) viewGroup.findViewById(R.id.btpay);
+        btn_pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), App.class);
+                Intent intent = new Intent(getActivity(), PayBTFriend.class);
                 startActivity(intent);
             }
         });
@@ -83,4 +83,3 @@ public class HomeMain extends Fragment{
     }
 
 }
-
