@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -83,6 +84,7 @@ public class Payment extends AppCompatActivity {
         final String str_Addr = "경기도 오산시";       // 로그인 관련 받아오기
         final String str_Phone = "010-1111-1111";   // 로그인 관련 받아오기
         final String str_Delcon = "0"; // 배달 여부
+        final int point = 20000; //DB에서 받아와야 함
 
         int riceCost = rice*1000;
         int juiceCost = juice*2000;
@@ -157,12 +159,28 @@ public class Payment extends AppCompatActivity {
 
                 AlertDialog.Builder dlg1 = new AlertDialog.Builder(Payment.this);
                 dlg1.setTitle("결제");
-                dlg1.setMessage("잔여 포인트: 포인트 받아오기\n결제액: " + cost + "\n\n\n 차감 후 잔액: 결과 받아오기");
+                dlg1.setMessage("잔여 포인트: "+point+"\n결제액: " + cost + "\n\n\n 차감 후 잔액: "+(point-cost));
                 dlg1.setIcon(R.drawable.chicken);
-                dlg1.setPositiveButton("결제",null);
+                dlg1.setPositiveButton("결제",yesButtonClickListener);
                 dlg1.show();
             }
+            private DialogInterface.OnClickListener yesButtonClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // payinfo 추가
+                    InsertData2 task = new InsertData2();
+                    task.execute("http://"+IP_ADDRESS+"/addPay.php", str_Uid,str_Oid, str_Price);
+/*
+                    // 캐쉬 변경
+                    Intent intent = new Intent(getApplicationContext(), HomeManager.class);
+                    int updateCash = point - cost;
+                    task.execute("http://"+IP_ADDRESS+"/getPoint.php", str_Uid, String.valueOf(updateCash));
+                    startActivity(intent);
+*/
+                }
+            };
         });
+
 
         Button btn_payment2 = (Button) findViewById(R.id.btn_payment2);
         btn_payment2.setOnClickListener(new View.OnClickListener() {
@@ -174,7 +192,7 @@ public class Payment extends AppCompatActivity {
                 dlg1.setIcon(R.drawable.chicken);
                 dlg1.setPositiveButton("검색", yesButtonClickListener);
                 dlg1.show();
-                }
+            }
 
             private DialogInterface.OnClickListener yesButtonClickListener = new DialogInterface.OnClickListener() {
                 @Override
@@ -274,6 +292,85 @@ public class Payment extends AppCompatActivity {
         }
     }
 
+    class InsertData2 extends AsyncTask<String, Void, String> {
+
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(Payment.this,
+                    "Please Wait", null, true, true);
+        }
+
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+        }
+
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String uid = (String)params[1];
+            String oid = (String)params[2];
+            String payprice = (String)params[3];
+
+            String serverURL = (String)params[0];
+            String postParameters = "oid=" + oid + "&uid=" + uid + "&payprice=" + payprice;
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.connect();
+
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "POST response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+                bufferedReader.close();
+                return sb.toString();
+
+            } catch (Exception e) {
+                Log.d(TAG, "InsertData: Error ", e);
+                return new String("Error: " + e.getMessage());
+            }
+
+        }
+    }
 
 
     private void init() {
@@ -369,7 +466,7 @@ public class Payment extends AppCompatActivity {
             data.setDlgPB(new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                   Toast.makeText(Payment.this, "메뉴 가격 정보 확인 완료",
+                    Toast.makeText(Payment.this, "메뉴 가격 정보 확인 완료",
                             Toast.LENGTH_SHORT).show();
                 }
             });
