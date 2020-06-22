@@ -79,14 +79,15 @@ public class Login extends AppCompatActivity {
 
                 if(checkbox.isChecked()){
                     Intent intent = new Intent(getApplicationContext(), HomeManager.class);
-                    startActivity(intent);
                     // php파일에서 멤버/관리자 추가 해야함
                     task.execute(mEditTextID.getText().toString(), mEditTextPw.getText().toString(),"2");
+                    startActivity(intent);
                 }
                 else {
                     Intent intent = new Intent(getApplicationContext(), Home.class);
-                    startActivity(intent);
+                    intent.putExtra("uid", mEditTextID.getText().toString());
                     task.execute(mEditTextID.getText().toString(), mEditTextPw.getText().toString(),"1");
+                    startActivity(intent);
                 }
             }
         });

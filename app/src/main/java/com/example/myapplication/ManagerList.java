@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -45,6 +46,7 @@ public class ManagerList extends AppCompatActivity {
     ArrayList<HashMap<String, String>> mArrayList;
     ListView mListViewList;
     String mJsonString;
+    int pos;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,27 +69,35 @@ public class ManagerList extends AppCompatActivity {
 
         mArrayList = new ArrayList<>();
 
+        // 배달 완료로 변경
         mListViewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder dlg1 = new AlertDialog.Builder(ManagerList.this);
                 dlg1.setTitle("주문 설정 변경");
                 dlg1.setMessage("배달 완료로 설정하시겠습니까?");
                 dlg1.setIcon(R.drawable.chicken);
-                dlg1.setPositiveButton("확인",yesButtonClickListener);
+                dlg1.setPositiveButton("확인", yesButtonClickListener);
+                dlg1.setNegativeButton("취소", null);
                 dlg1.show();
+                pos = position;
             }
 
             private DialogInterface.OnClickListener yesButtonClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // 코드 변경
+                    InsertData task2 = new InsertData();
+                    String str_Oid = mArrayList.get(pos).get(TAG_OID);;
+                    task2.execute("http://"+IP_ADDRESS+"/orderpermit.php", str_Oid, "1");
 
-
+                    Intent intent = new Intent(getApplicationContext(), ManagerList.class);
+                    startActivity(intent);
                 }
             };
         });
 
+        // 주문 취소로 변경
         mListViewList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,16 +105,23 @@ public class ManagerList extends AppCompatActivity {
                 dlg1.setTitle("주문 설정 변경");
                 dlg1.setMessage("주문 취소로 설정하시겠습니까?");
                 dlg1.setIcon(R.drawable.chicken);
-                dlg1.setPositiveButton("확인",yesButtonClickListener2);
+                dlg1.setPositiveButton("확인", yesButtonClickListener2);
+                dlg1.setNegativeButton("취소", null);
                 dlg1.show();
+                pos = position;
 
-                return false;
+                return true;
             }
 
             private DialogInterface.OnClickListener yesButtonClickListener2 = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // 코드 변경
+                    InsertData task2 = new InsertData();
+                    String str_Oid = mArrayList.get(pos).get(TAG_OID);;
+                    task2.execute("http://"+IP_ADDRESS+"/orderpermit.php", str_Oid, "2");
+
+                    Intent intent = new Intent(getApplicationContext(), ManagerList.class);
+                    startActivity(intent);
                 }
             };
         });
@@ -206,7 +223,6 @@ public class ManagerList extends AppCompatActivity {
         }
     }
 
-
     private void showResult(){
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -263,6 +279,86 @@ public class ManagerList extends AppCompatActivity {
         }
 
     }
+
+    class InsertData extends AsyncTask<String, Void, String> {
+
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(ManagerList.this,
+                    "Please Wait", null, true, true);
+        }
+
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+        }
+
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String oid = (String)params[1];
+            String delcon = (String)params[2];
+
+            String serverURL = (String)params[0];
+            String postParameters = "oid=" + oid + "&delcon=" + delcon;
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.connect();
+
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "POST response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+                bufferedReader.close();
+                return sb.toString();
+
+            } catch (Exception e) {
+                Log.d(TAG, "InsertData: Error ", e);
+                return new String("Error: " + e.getMessage());
+            }
+
+        }
+    }
+
 
 
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -63,12 +63,16 @@ public class Payment extends AppCompatActivity {
         getData();
 
         Intent intent = getIntent();
+        int rice = intent.getExtras().getInt("rice");
+        int juice = intent.getExtras().getInt("juice");
+        int soju = intent.getExtras().getInt("soju");
         String menu = intent.getStringExtra("menu");
         int id1 = intent.getIntExtra("id1", 0); // R.id.rbtn_1_1:18000, R.id.rbtn_1_2:25000, R.id.rbtn_1_3:32000
         int id2 = intent.getIntExtra("id2", 0); // R.id.rbtn_2_1:순한맛,  R.id.rbtn_2_2:중간맛,  R.id.rbtn_2_3:매운맛
         boolean c1 = intent.getBooleanExtra("c1", false);   // 당면
         boolean c2 = intent.getBooleanExtra("c2", false);   // 감자
         boolean c3 = intent.getBooleanExtra("c3", false);   // 만두
+
 
         final String str_Oid = "5";   // DB에서 받아와야 됨
         final String str_Tdate = format1.format(time);    // 현재 날짜 받아오기
@@ -80,6 +84,10 @@ public class Payment extends AppCompatActivity {
         final String str_Phone = "010-1111-1111";   // 로그인 관련 받아오기
         final String str_Delcon = "0"; // 배달 여부
 
+        int riceCost = rice*1000;
+        int juiceCost = juice*2000;
+        int sojuCost = soju*4000;
+        cost = cost + riceCost + juiceCost + sojuCost;
 
         if (id1 == R.id.rbtn_1_1) {
             listTitle.add(menu);
@@ -131,7 +139,9 @@ public class Payment extends AppCompatActivity {
             listContent2.add("토핑추가");
             cost += 2000;
         }
-
+        listTitle.add("공기밥 추가 "+rice+"개");
+        listTitle.add("탄산음료(1.25L) 추가 "+juice+"개");
+        listTitle.add("소주 추가 "+soju+"개");
 
         str_Price = Integer.toString(cost);
 
@@ -164,13 +174,14 @@ public class Payment extends AppCompatActivity {
                 dlg1.setIcon(R.drawable.chicken);
                 dlg1.setPositiveButton("검색", yesButtonClickListener);
                 dlg1.show();
-
                 }
 
             private DialogInterface.OnClickListener yesButtonClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                  // 블루투스 연결 코드
+                    Intent btintent = new Intent(getApplicationContext(), PayBTOrder.class);
+                    btintent.putExtra("cost", cost);
+                    startActivity(btintent);
                 }
             };
         });
@@ -277,6 +288,9 @@ public class Payment extends AppCompatActivity {
 
     private void getData() {
         Intent intent = getIntent();
+        int rice = intent.getExtras().getInt("rice");
+        int juice = intent.getExtras().getInt("juice");
+        int soju = intent.getExtras().getInt("soju");
         String menu = intent.getStringExtra("menu");
         int id1 = intent.getIntExtra("id1", 0);
         int id2 = intent.getIntExtra("id2", 0);
@@ -289,6 +303,11 @@ public class Payment extends AppCompatActivity {
         final List<String> listContent = new ArrayList<String>();
         final List<String> listContent2 = new ArrayList<String>();
         int cost = 0;
+
+        int riceCost = rice*1000;
+        int juiceCost = juice*2000;
+        int sojuCost = soju*4000;
+        cost = cost + riceCost + juiceCost + sojuCost;
 
         if (id1 == R.id.rbtn_1_1) {
             listTitle.add(menu);
@@ -331,6 +350,12 @@ public class Payment extends AppCompatActivity {
             listContent2.add("토핑추가");
             cost += 2000;
         }
+//        listTitle.add("공기밥 추가 "+rice+"개");
+//        listContent.add(riceCost + "원");
+//        listTitle.add("탄산음료(1.25L) 추가 "+juice+"개");
+//        listContent.add(juiceCost + "원");
+//        listTitle.add("소주 추가 "+soju+"개");
+//        listContent.add(sojuCost + "원");
 
         for (int i = 0; i < listTitle.size(); i++) {
             // 각 List의 값들을 data 객체에 set 해줍니다.

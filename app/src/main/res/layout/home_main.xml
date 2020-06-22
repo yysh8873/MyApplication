@@ -154,7 +154,7 @@
             android:layout_weight="1"
             android:padding="10dp"
             android:layout_margin="10dp"
-            android:id="@+id/fndpay"/>
+            android:id="@+id/btpay"/>
 
     </LinearLayout>
 
