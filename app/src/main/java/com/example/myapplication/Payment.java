@@ -170,13 +170,14 @@ public class Payment extends AppCompatActivity {
                     // payinfo 추가
                     InsertData2 task = new InsertData2();
                     task.execute("http://"+IP_ADDRESS+"/addPay.php", str_Uid,str_Oid, str_Price);
-/*
+
                     // 캐쉬 변경
-                    Intent intent = new Intent(getApplicationContext(), HomeManager.class);
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
                     int updateCash = point - cost;
-                    task.execute("http://"+IP_ADDRESS+"/getPoint.php", str_Uid, String.valueOf(updateCash));
+                    GetData task2 = new GetData();
+                    task2.execute(str_Uid, String.valueOf(updateCash));
                     startActivity(intent);
-*/
+
                 }
             };
         });
@@ -372,6 +373,83 @@ public class Payment extends AppCompatActivity {
         }
     }
 
+    private class GetData extends AsyncTask<String, Void, String> {
+
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(Payment.this,
+                    "Please Wait", null, true, true);
+        }
+
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String uid = params[0];
+            String cash = params[1];
+
+
+            String serverURL = "http://13.125.45.205/getPoint.php";
+            String postParameters = "uid=" + uid + "&cash=" + cash;
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                // php가 echo한 문자열 받아옴
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+                bufferedReader.close();
+                return sb.toString().trim();
+
+            } catch (Exception e) {
+                Log.d(TAG, "InsertData: Error ", e);
+                return new String("Error: " + e.getMessage());
+            }
+
+        }
+    }
 
     private void init() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
