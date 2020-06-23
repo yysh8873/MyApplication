@@ -48,7 +48,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="값 받아오기"
+                    android:text="이소현"
                     android:textSize="20dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
@@ -60,7 +60,6 @@
 
             <EditText android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:hint="값 받아오기"
                       android:textSize="20dp"
                       android:layout_gravity="center"
                       android:layout_margin="10dp"
@@ -86,13 +85,13 @@
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:padding="10dp"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.25"
                     android:fontFamily="@font/font1"/>
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="값 받아오기"
+                    android:text="so"
                     android:textSize="20dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
@@ -118,14 +117,14 @@
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:padding="10dp"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.25"
                     android:fontFamily="@font/font1"/>
 
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="값 받아오기"
+                    android:text="so11"
                     android:textSize="20dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
@@ -137,7 +136,6 @@
 
             <EditText android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:hint="값 받아오기"
                       android:textSize="20dp"
                       android:layout_gravity="center"
                       android:layout_margin="10dp"
@@ -163,14 +161,14 @@
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:padding="10dp"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.4"
                     android:fontFamily="@font/font1"/>
 
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="값 받아오기"
+                    android:text="010-1234-5678"
                     android:textSize="20dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
@@ -182,7 +180,6 @@
 
             <EditText android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:hint="값 받아오기"
                       android:textSize="20dp"
                       android:layout_gravity="center"
                       android:layout_margin="10dp"
@@ -215,7 +212,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="값 받아오기"
+                    android:text="경기도 오산시"
                     android:textSize="20dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
@@ -227,7 +224,6 @@
 
             <EditText android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:hint="값 받아오기"
                       android:textSize="20dp"
                       android:layout_gravity="center"
                       android:layout_margin="10dp"
