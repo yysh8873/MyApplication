@@ -51,6 +51,7 @@ public class Home extends AppCompatActivity {
                     case R.id.tab1:{
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.main_layout, homeMain).commitAllowingStateLoss();
+                        homeMain.setArguments(bundle);
                         return true;
                     } case R.id.tab2:{ getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_layout, homeList).commitAllowingStateLoss();
